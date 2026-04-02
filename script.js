@@ -3,7 +3,9 @@ const titulo = document.getElementById('titulo-pelicula');
 const sinopsis = document.getElementById('movie-desc');
 const imagen = document.getElementById('movie-poster');
 const pelicula = document.getElementById("movies-main")
-
+const botonBuscar = document.getElementById("buscar")
+const inputBuscar = document.getElementById("input-search")
+let todasLasPeliculas = []
 
 const miLlave = '76456af74c9794a3b514f20d09f67161'; 
 
@@ -22,9 +24,27 @@ const options = {
 fetch(url, options)
   .then(res => res.json())
   .then(json => {
-   let results = json.results;
+   todasLasPeliculas = json.results;
 
-   pelicula.innerHTML = results.map(movie => `
+     mostrarPeliculas(todasLasPeliculas)
+  })
+  .catch(err => console.error(err));
+};
+
+cargarPeliculas()
+
+botonBuscar.addEventListener("click", function() {
+  let buscador = inputBuscar.value.toLowerCase()
+  console.log("funciona")
+
+  let filtradas = todasLasPeliculas.filter(function(pelicula) {
+    return pelicula.original_title.toLowerCase().includes(buscador)
+  }) 
+  mostrarPeliculas(filtradas)
+})
+
+function mostrarPeliculas (lista) {
+pelicula.innerHTML = lista.map(movie => `
       <div class="movie-container">
       <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" />
       </div>
@@ -34,8 +54,5 @@ fetch(url, options)
         <button>Buy tickets<button>
         </div>
     `).join("");
-  })
-  .catch(err => console.error(err));
-};
+  };
 
-cargarPeliculas()
