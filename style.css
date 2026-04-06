@@ -38,7 +38,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 1px;
-    padding: 70px;
+    padding: 40px;
     background-color: var(--color-navbar);
     border-bottom: 1px solid var(--color-accent);
 }
@@ -46,7 +46,7 @@ body {
 .logo {
     font-size: 60px;
     color: var(--color-title);
-   font-family: 'GuardianLaser';
+   font-family:'Smooch Sans', sans-serif;
    font-weight: 100;
     
 }
@@ -58,6 +58,16 @@ body {
     padding: 12px 10px;
     border-radius: 10px;
     font-size: 16px;
+}
+
+#search-results {
+    display: none;
+     position: absolute;
+    background-color: var(--color-navbar);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    width: 300px;
+    z-index: 10;
 }
 
 .search-container input::placeholder {
@@ -202,6 +212,31 @@ body {
     background-color: #222a3e60;
     margin-bottom: 50px;
     gap: 30px;
+}
+
+.featured-films {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    border-radius: 18px;
+    background-color: #222a3e60;
+    margin-bottom: 50px;
+    gap: 30px;
+}
+
+.featured-films img {
+    border-radius: 20px;
+}
+
+.featured-films button {
+    padding: 10px 10px;
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    border: 1px solid var(--color-border-buttons);
+    font-size: 18px;
+    color: var(--color-text);
+    font-family: "calibri";
+    width: 200px;
 }
 
 
